@@ -13,3 +13,36 @@ Reference:
 http://tensorfly.cn/tfdoc/how_tos/variable_scope.html
 """
 
+def my_image_filter(input_images):
+    conv1_weights = tf.Variable(tf.random_normal([5, 5, 32, 32]), name="conv1_weights")
+    conv1_biases = tf.Variable(tf.zeros([32]), name="conv1_biases")
+    conv1 = tf.nn.conv2d(input_images, conv1_weights, strides=[1, 1, 1, 1], padding="SAME")
+    relu1 = tf.nn.relu(conv1 + conv1_biases)
+
+    conv2_weights = tf.Variable(tf.random_normal([5, 5, 32,32]), name="conv2_wights")
+    conv2_biases = tf.Variable(tf.zeros([32]), name="conv2_biases")
+    conv2 = tf.nn.conv2d(relu1, conv2_wights, strides=[1, 1, 1, 1], padding='SAME')
+    return tf.nn.relu(conv2 + conv2_biases)
+
+#===========================better code======================
+def conv_relu(input, kernel_shape, bias_shape):
+    weights = tf.get_variable("weights", kernel_shape, initializer=tf.random_normal_initializer())
+    biases = tf.get_variable("biases", bias_shape, initializer=tf.constan_initializer(0.0))
+    conv = tf.nn.conv2d(input, weights, strides=[1, 1, 1, 1], padding='SAME')
+    return tf.nn.relu(conv + biases)
+
+def my_image_filter(input_images):
+    with tf.variable_scope("conv1"):
+        relu1 = conv_relu(input_images, [5, 5, 32, 32], [32])
+    with tf.variable_scope("conv2"):
+        return conv_relu(relu1, [5, 5, 32, 32], [32])
+
+with tf.variable_scope("image_filter") as scope:
+    result1 = my_image_filter(image1)
+    scope.reuse_variables()
+    result2 = my_image_filter(image2)
+
+
+
+
+
