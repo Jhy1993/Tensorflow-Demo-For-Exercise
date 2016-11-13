@@ -29,5 +29,8 @@ def read_csv(batch_size, file_name, record_defaults):
 
     reader = tf.TextLineReader(skip_header_lines=1)
     key, value = reader.read(filename_queue)
-    
-    pass
+
+    decoded = tf.decode_csv(value, record_defaults=record_defaults)
+
+    return tf.train.shuffle_batch(decoded, batch_size=batch_size, capacity=batch_size * 50, min_after_dequeue=batch_size)
+
