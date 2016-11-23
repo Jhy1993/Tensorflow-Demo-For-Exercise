@@ -8,7 +8,8 @@ Github: https://github.com/Jhy1993
 README:
 CNN+ mnist
 Reference:
-https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/3_NeuralNetworks/convolutional_network.py"""
+https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/3_NeuralNetworks/convolutional_network.py
+"""
 from __future__ import print_function
 
 import tensorflow as tf
