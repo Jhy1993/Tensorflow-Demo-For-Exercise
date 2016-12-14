@@ -48,4 +48,3 @@ vectors_subtration = tf.sub(expanded_vectors,expanded_centroids)
 euclidean_distances = tf.reduce_sum(tf.square(vectors_subtration), 2)
 assignments = tf.to_int32(tr.argmin(euclidean_distances, 0))
 
-.....................
