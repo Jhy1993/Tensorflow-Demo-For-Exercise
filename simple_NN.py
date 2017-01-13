@@ -11,7 +11,7 @@ import input_data
 import tensorflow as tf
 import matplotlib.pyplot as plt
 
-mnist = input_data.read_data_set s("/tmp/data/", one_hot=True)
+mnist = input_data.read_data_sets("/tmp/data/", one_hot=True)
 training_epochs = 25
 learning_rate = 0.01
 batch_size = 100
@@ -44,8 +44,8 @@ with tf.Session() as sess:
             sess.run(optimizer, feed_dict={x: batch_xs, y: batch_ys})
             avg_cost += sess.run(cost, feed_dict={x: batch_xs, y: batch_ys}) / total_batch
         if epoch % display_step == 0:
-            print "Epoch:", '%04d' % (epoch+1), "cost=","{:.9f}".format(avg_cost)
-    print " Training phase finished"    
+            print ("Epoch:", '%04d' % (epoch+1), "cost=","{:.9f}".format(avg_cost))
+    print (" Training phase finished"   ) 
     plt.plot(epoch_set,avg_set, 'o', label='Logistic Regression Training phase')
     plt.ylabel('cost')
     plt.xlabel('epoch')
@@ -54,8 +54,8 @@ with tf.Session() as sess:
 correct_prediction = tf.equal(tf.argmax(activation, 1))
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))
 
-print "MODEL accuracy:", accuracy.eval({x: mnist.test.images, y: mnist.test.labels})
-
+print ("MODEL accuracy:", accuracy.eval({x: mnist.test.images, y: mnist.test.labels}))
+'''
 #=========================================mnist NN=====================
 import input_data
 
@@ -120,5 +120,5 @@ with tf.Session() as sess:
         
 
 
-
+'''
 

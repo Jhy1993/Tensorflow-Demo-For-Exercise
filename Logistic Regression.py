@@ -21,7 +21,7 @@ opt = tf.train.GradientDescentOptimizer(learning_rate).minimize(cost)
 
 init = tf.initialize_all_variables()
 
-with tf.Session() as tf:
+with tf.Session() as sess:
     sess.run(init)
 
     for epoch in range(training_epochs):
@@ -34,10 +34,10 @@ with tf.Session() as tf:
             avg_cost += c / total_batch
 
         if (epoch+1) % display_step == 0:
-            print "Epoch %d" %(epoch+1), "Cost %d" % avg_cost
+            print ("Epoch %d" %(epoch+1), "Cost %d" % avg_cost)
 print ('GradientDescentOptimizer OK')            
 
 correct_pred = tf.equal(tf.argmax(pred, 1), tf.argmax(y, 1))
 accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
 
-print 'Accuracy', accuracy.eval({x: mnist.test.images, y: mnist.test.images})
+print ('Accuracy', accuracy.eval({x: mnist.test.images, y: mnist.test.images}))

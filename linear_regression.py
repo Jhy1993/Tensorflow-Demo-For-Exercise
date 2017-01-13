@@ -33,9 +33,10 @@ with tf.Session() as sess:
     for epoch in range(training_epochs):
         for (x, y) in zip(train_X, train_Y):
             sess.run(optimizer, feed_dict={X: x, Y: y})
-    print "optimizer finished"
-    print "cost=", sess.run(cost, feed_dict={X: train_X, Y: train_Y})
-    print "W=", sess.run(W), "b=", sess.run(b)
+    print ("optimizer finished")
+    print ("cost=", sess.run(cost, feed_dict={X: train_X, Y: train_Y})
+    print ("W=", sess.run(W), "b=", sess.run(b))
+
 
     plt.plot(train_X, train_Y, 'ro', label='Orighinal data')
     plt.plot(train_X, sess.run(W) * train_X + see.run(b), label='Finishes line')
