@@ -22,7 +22,7 @@ mnist = input_data.read_data_sets("/tmp/data/", one_hot=True)
 
 # Parameters
 learning_rate = 0.001
-training_iters = 200000
+training_iters = 20000
 batch_size = 128
 display_step = 10
 
@@ -102,5 +102,6 @@ with tf.Session() as sess:
 
     test_accuracy = sess.run(accuracy, 
         feed_dict={x: mnist.test.images[:256], y: mnist.test.labels[:256], keep_prob: 1.0})
+    print('Test ACC: {}'.format(test_accuracy))
 
 
