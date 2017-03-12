@@ -14,16 +14,13 @@ so we handle 28 sequences of 28 step for every sample
 Reference:
 https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/3_NeuralNetworks/recurrent_network.py
 http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf
-"""
 
-
-'''
 A Recurrent Neural Network (LSTM) implementation example using TensorFlow library.
 This example is using the MNIST database of handwritten digits (http://yann.lecun.com/exdb/mnist/)
 Long Short Term Memory paper: http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf
 Author: Aymeric Damien
 Project: https://github.com/aymericdamien/TensorFlow-Examples/
-'''
+"""
 
 from __future__ import print_function
 
@@ -42,7 +39,7 @@ handle 28 sequences of 28 steps for every sample.
 
 # Parameters
 learning_rate = 0.001
-training_iters = 100000
+training_iters = 10000
 batch_size = 128
 display_step = 10
 

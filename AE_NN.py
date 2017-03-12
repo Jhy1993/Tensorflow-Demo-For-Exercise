@@ -100,13 +100,14 @@ def decoder(x):
     L1 = tf.nn.tanh(tf.add(tf.matmul(x, d_weights_h1), d_biases_h1))
     L2 = tf.nn.tanh(tf.add(tf.matmul(L1, d_weights_h2), d_biases_h2))
     L3 = tf.nn.tanh(tf.add(tf.matmul(L2, d_weights_h3), d_biases_h3))
-    retrun L3
+    return L3
 
 def dnn(x):
     L1 = tf.nn.tanh(tf.add(tf.matmul(x, dnn_weights_h1), dnn_biases_h1))
     L2 = tf.nn.tanh(tf.add(tf.matmul(L1, dnn_weights_h2), dnn_biases_h2))
     L3 = tf.nn.tanh(tf.add(tf.matmul(L2, dnn_weights_h2), dnn_biases_out))
     return L3
+
 
 encoded = encoder(x)
 decoded = decoder(encoded)

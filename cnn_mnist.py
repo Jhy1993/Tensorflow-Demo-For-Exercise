@@ -22,7 +22,7 @@ mnist = input_data.read_data_sets("/tmp/data/", one_hot=True)
 
 # Parameters
 learning_rate = 0.001
-training_iters = 20000
+training_iters = 2000
 batch_size = 128
 display_step = 10
 
@@ -90,6 +90,7 @@ with tf.Session() as sess:
     step = 1
     while step * batch_size < training_iters:
         batch_x, batch_y = mnist.train.next_batch(batch_size)
+        print(batch_x.shape)
         sess.run(optimzier, feed_dict={x: batch_x, y: batch_y, keep_prob: dropout})
         
         if step % display_step == 0:
